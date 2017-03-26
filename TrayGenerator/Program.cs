@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace TrayGenerator
 {
-    public sealed class NotificationIcon : Control
+    public sealed class NotificationIcon
     {
         private NotifyIcon notifyIcon;
         private ContextMenu notificationMenu;
@@ -34,8 +34,8 @@ namespace TrayGenerator
         #endregion
 
 
-        //private static Form1 _form1;
-        
+        private static Form _form1;
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -45,32 +45,26 @@ namespace TrayGenerator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            bool IsFirstInstance;
-            using (Mutex myMutex = new Mutex(true, "TrayGenerator", out IsFirstInstance))
+
+            var notificationIcon = new NotificationIcon {notifyIcon = {Visible = true}};
+            using (var form = new Form())
             {
-                if (IsFirstInstance)
-                {
-                    var notificationIcon = new NotificationIcon {notifyIcon = {Visible = true}};
-                    Application.Run(new Form());
-                    notificationIcon.notifyIcon.Dispose();
-                    notificationIcon.HotKeyRegister(Keys.X, KeyModifiers.Shift);
-                }
+                form.Shown += form_Shown;
+                Application.Run(form);
             }
+            notificationIcon.notifyIcon.Dispose();
             //var notifyIcon = new NotifyIcon {Icon = Properties.Resources.MyIcon};
             //notifyIcon.Click += NotifyIcon_Click;
             //notifyIcon.Visible = true;
             //Application.Run(new Form1());
         }
 
-        //private static void NotifyIcon_Click(object sender, EventArgs e)
-        //{
-        //    if (_form1 == null || _form1.IsDisposed)
-        //        _form1 = new Form1();
-        //    if (!_form1.Visible)
-        //        _form1.Show();
-        //}
-
         #region Event Handlers
+
+        private static void form_Shown(object sender, EventArgs e)
+        {
+            (sender as Form)?.Hide();
+        }
 
         private static void MenuGenerateInnIp(object sender, EventArgs e)
         {
@@ -89,26 +83,11 @@ namespace TrayGenerator
 
         private void IconDoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("The icon was double clicked");
+            if (_form1 == null || _form1.IsDisposed)
+                _form1 = new Form();
+            if (!_form1.Visible)
+                _form1.Show();
         }
         #endregion
-
-        private void HotKeyRegister(Keys keys, KeyModifiers keyModifiers)
-        {
-            var hkey = new HotKey(keys, keyModifiers);
-            hkey.Pressed += (o, e) => { Clipboard.SetText(DataGenerator.InnIp); };
-            hkey.Register(this);
-        }
-
-
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-            base.OnKeyDown(e);
-            if (e.KeyCode == Keys.C && e.Control && e.Shift)
-            {
-                MessageBox.Show(@"Test");
-                e.Handled = true;
-            }
-        }
     }
 }
