@@ -45,18 +45,13 @@ namespace TrayGenerator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
             var notificationIcon = new NotificationIcon {notifyIcon = {Visible = true}};
-            using (var form = new Form())
+            using (var form = new Form(notificationIcon.notifyIcon))
             {
                 form.Shown += form_Shown;
                 Application.Run(form);
             }
             notificationIcon.notifyIcon.Dispose();
-            //var notifyIcon = new NotifyIcon {Icon = Properties.Resources.MyIcon};
-            //notifyIcon.Click += NotifyIcon_Click;
-            //notifyIcon.Visible = true;
-            //Application.Run(new Form1());
         }
 
         #region Event Handlers
@@ -84,7 +79,7 @@ namespace TrayGenerator
         private void IconDoubleClick(object sender, EventArgs e)
         {
             if (_form1 == null || _form1.IsDisposed)
-                _form1 = new Form();
+                _form1 = new Form(notifyIcon);
             if (!_form1.Visible)
                 _form1.Show();
         }

@@ -13,9 +13,12 @@ namespace TrayGenerator
 {
     public partial class Form : System.Windows.Forms.Form
     {
+        private readonly NotifyIcon _notifyIcon;
 
-        public Form()
+
+        public Form(NotifyIcon notifyIcon)
         {
+            _notifyIcon = notifyIcon;
             InitializeComponent();
             this.KeyPreview = true;
             HotKeyRegister(Keys.V, KeyModifiers.Shift);
@@ -27,7 +30,10 @@ namespace TrayGenerator
             hkey.Pressed += (o, e) =>
             {
                 Clipboard.SetText(DataGenerator.InnIp);
-                SystemSounds.Hand.Play();
+
+                var toolTip = new ToolTip();
+                
+                _notifyIcon.ShowBalloonTip(2, "Буфер обновлен", "Сгенерирован ИНН для ИП", ToolTipIcon.Info);
                 e.Handled = true;
             };
             hkey.Register(this);
