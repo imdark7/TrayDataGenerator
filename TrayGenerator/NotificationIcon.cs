@@ -7,7 +7,7 @@ namespace TrayGenerator
     {
         private static NotifyIcon _notifyIcon;
         private static ContextMenu NotificationMenu => new ContextMenu(InitializeMenu());
-        public static bool ShowNotificationStrategy = true;
+        public static bool ShowNotificationStrategy;
         private static Form _mainForm;
         
         public static Form Initialize()
