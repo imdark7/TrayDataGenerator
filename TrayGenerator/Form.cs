@@ -32,5 +32,11 @@ namespace TrayGenerator
         {
             (sender as Form)?.Hide();
         }
+
+        private void Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = !Program.NeedToClose;
+            Hide();
+        }
     }
 }

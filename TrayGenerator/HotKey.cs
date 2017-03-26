@@ -101,13 +101,7 @@ namespace TrayGenerator
         /// </returns>
         public bool PreFilterMessage(ref Message message)
         {
-            if (message.Msg != WmHotkey || !IsRegistered)
-                return false;
-
-            if (message.WParam == Guid)
-                return OnPressed();
-
-            return false;
+            return message.Msg == WmHotkey && IsRegistered && (message.WParam == Guid && OnPressed());
         }
 
         /// <summary>

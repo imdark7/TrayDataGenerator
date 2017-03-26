@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace TrayGenerator
 {
-    public sealed class Program
+    public static class Program
     {
-        
+        public static bool NeedToClose { get; set; }
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>

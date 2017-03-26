@@ -55,6 +55,7 @@ namespace TrayGenerator
 
         private static void MenuExitClick(object sender, EventArgs e)
         {
+            Program.NeedToClose = true;
             Application.Exit();
         }
 
