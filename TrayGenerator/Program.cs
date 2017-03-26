@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace TrayGenerator
 {
-    public sealed class NotificationIcon
+    public sealed class NotificationIcon : Control
     {
         private NotifyIcon notifyIcon;
         private ContextMenu notificationMenu;
@@ -51,9 +51,9 @@ namespace TrayGenerator
                 if (IsFirstInstance)
                 {
                     var notificationIcon = new NotificationIcon {notifyIcon = {Visible = true}};
-                    Application.Run();
+                    Application.Run(new Form());
                     notificationIcon.notifyIcon.Dispose();
-                    HotKeyRegister(Keys.X, KeyModifiers.Shift);
+                    notificationIcon.HotKeyRegister(Keys.X, KeyModifiers.Shift);
                 }
             }
             //var notifyIcon = new NotifyIcon {Icon = Properties.Resources.MyIcon};
@@ -93,12 +93,22 @@ namespace TrayGenerator
         }
         #endregion
 
-        private static void HotKeyRegister(Keys keys, KeyModifiers keyModifiers)
+        private void HotKeyRegister(Keys keys, KeyModifiers keyModifiers)
         {
             var hkey = new HotKey(keys, keyModifiers);
-            hkey.Pressed += (o, e) => { MessageBox.Show(@"Hello World!"); e.Handled = true; };
-            //hkey.Register(this);
+            hkey.Pressed += (o, e) => { Clipboard.SetText(DataGenerator.InnIp); };
+            hkey.Register(this);
+        }
 
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+            if (e.KeyCode == Keys.C && e.Control && e.Shift)
+            {
+                MessageBox.Show(@"Test");
+                e.Handled = true;
+            }
         }
     }
 }
