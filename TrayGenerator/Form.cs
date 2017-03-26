@@ -1,26 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TrayGenerator
 {
     public partial class Form : System.Windows.Forms.Form
     {
-        private readonly NotifyIcon _notifyIcon;
-
-
-        public Form(NotifyIcon notifyIcon)
+        public Form()
         {
-            _notifyIcon = notifyIcon;
             InitializeComponent();
-            this.KeyPreview = true;
+            Shown += Form_Shown;
+            KeyPreview = true;
             HotKeyRegister(Keys.V, KeyModifiers.Shift);
         }
 
@@ -30,13 +19,18 @@ namespace TrayGenerator
             hkey.Pressed += (o, e) =>
             {
                 Clipboard.SetText(DataGenerator.InnIp);
-
-                var toolTip = new ToolTip();
-                
-                _notifyIcon.ShowBalloonTip(2, "Буфер обновлен", "Сгенерирован ИНН для ИП", ToolTipIcon.Info);
+                if (NotificationIcon.ShowNotificationStrategy)
+                {
+                    NotificationIcon.ShowBalloonTip(2, "Буфер обновлен", "Сгенерирован ИНН для ИП", ToolTipIcon.Info);
+                }
                 e.Handled = true;
             };
             hkey.Register(this);
+        }
+
+        private static void Form_Shown(object sender, EventArgs e)
+        {
+            (sender as Form)?.Hide();
         }
     }
 }

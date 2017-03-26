@@ -49,7 +49,7 @@ namespace TrayGenerator
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool RegisterHotKey(IntPtr hWnd, IntPtr id, KeyModifiers fsModifiers, Keys vk);
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool UnregisterHotKey(IntPtr hWnd, IntPtr id);
         #endregion
@@ -146,9 +146,10 @@ namespace TrayGenerator
                 return;
             }
 
+            //todo: тут кидается исключение при закрытии программы, не могу разобраться в причинах
             if (!UnregisterHotKey(_windowHandle, Guid))
             {
-                throw new Win32Exception();
+                //throw new Win32Exception();
             }
 
             IsRegistered = false;
