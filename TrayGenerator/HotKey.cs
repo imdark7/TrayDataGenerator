@@ -5,40 +5,6 @@ using System.Windows.Forms;
 
 namespace TrayGenerator
 {
-    /// <summary>
-    /// Specifies key modifiers.
-    /// </summary>
-    [Flags]
-    public enum KeyModifiers : uint
-    {
-        /// <summary>
-        /// Empty modifiers
-        /// </summary>
-        None = 0x0000,
-        /// <summary>
-        /// Either ALT key must be held down.
-        /// </summary>
-        Alt = 0x0001,
-        /// <summary>
-        /// Either CTRL key must be held down.
-        /// </summary>
-        Control = 0x0002,
-        /// <summary>
-        /// Either SHIFT key must be held down.
-        /// </summary>
-        Shift = 0x0004,
-        /// <summary>
-        /// Either WINDOWS key was held down. 
-        /// These keys are labeled with the Windows logo. 
-        /// Keyboard shortcuts that involve the WINDOWS key are reserved for use by the operating system.
-        /// </summary>
-        Windows = 0x0008,
-        //IgnoreAllModifier   = 0x0400,
-        //OnKeyUp             = 0x0800,
-        //MouseRight          = 0x4000,
-        //MouseLeft           = 0x8000,
-    }
-
     public class HotKey : IMessageFilter, IDisposable
     {
         #region Extern
@@ -58,10 +24,11 @@ namespace TrayGenerator
         private IntPtr _windowHandle;
         public event HandledEventHandler Pressed;
 
-        public HotKey(Keys keyCode = Keys.None, KeyModifiers modifiers = KeyModifiers.None)
+        public HotKey(Keys keyCode = Keys.None, KeyModifiers modifiers = KeyModifiers.None, KeyModifiers secondModifiers = KeyModifiers.None)
         {
             KeyCode = keyCode;
             Modifiers = modifiers;
+            SecondModifiers = secondModifiers;
             Application.AddMessageFilter(this);
         }
 
@@ -168,6 +135,8 @@ namespace TrayGenerator
 
         public KeyModifiers Modifiers { get; private set; }
 
+        public KeyModifiers SecondModifiers { get; private set; }
+        
         public Keys KeyCode { get; private set; }
 
         public int Tag { get; set; }

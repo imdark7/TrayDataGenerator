@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
+
 namespace TrayGenerator.Properties {
     using System;
     
@@ -61,12 +63,42 @@ namespace TrayGenerator.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.
+        /// </summary>
+        public static string Modifier1
+        {
+            get {
+                return ResourceManager.GetString("Modifier1", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.
+        /// </summary>
+        public static string Modifier2
+        {
+            get {
+                return ResourceManager.GetString("Modifier2", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
         /// </summary>
         public static System.Drawing.Icon MyIcon {
             get {
                 object obj = ResourceManager.GetObject("MyIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.
+        /// </summary>
+        public static string SettingKey
+        {
+            get {
+                return ResourceManager.GetString("SettingKey", resourceCulture);
             }
         }
     }
