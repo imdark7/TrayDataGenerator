@@ -27,8 +27,7 @@ namespace TrayGenerator
         public HotKey(Keys keyCode = Keys.None, KeyModifiers modifiers = KeyModifiers.None, KeyModifiers secondModifiers = KeyModifiers.None)
         {
             KeyCode = keyCode;
-            Modifiers = modifiers;
-            SecondModifiers = secondModifiers;
+            Modifiers = modifiers+(uint) secondModifiers;
             Application.AddMessageFilter(this);
         }
 
@@ -127,15 +126,13 @@ namespace TrayGenerator
 
         #region Fields
 
-        private IntPtr Guid => new IntPtr((int)Modifiers << 16 | (int)KeyCode & 0xFFFF);
+        private IntPtr Guid => new IntPtr((int) Modifiers << 16 | (int) KeyCode & 0xFFFF);
 
         public bool IsEmpty => KeyCode == Keys.None;
 
         public bool IsRegistered { get; private set; }
 
         public KeyModifiers Modifiers { get; private set; }
-
-        public KeyModifiers SecondModifiers { get; private set; }
         
         public Keys KeyCode { get; private set; }
 

@@ -36,8 +36,8 @@ namespace TrayGenerator
             this.ModifierDropDown2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.KeyDropDown = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SettingKeyDropDown = new System.Windows.Forms.ComboBox();
+            this.SaveHotkeyButton = new System.Windows.Forms.Button();
             this.hotKeyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.hotKeyBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.hotKeyBindingSource)).BeginInit();
@@ -46,14 +46,12 @@ namespace TrayGenerator
             // 
             // ModifierDropDown1
             // 
-            this.ModifierDropDown1.DataSource = new TrayGenerator.KeyModifiers[]
-            {
-                TrayGenerator.KeyModifiers.None,
-                TrayGenerator.KeyModifiers.Alt,
-                TrayGenerator.KeyModifiers.Control,
-                TrayGenerator.KeyModifiers.Shift,
-                TrayGenerator.KeyModifiers.Windows
-            };
+            this.ModifierDropDown1.DataSource = new TrayGenerator.KeyModifiers[] {
+        TrayGenerator.KeyModifiers.None,
+        TrayGenerator.KeyModifiers.Alt,
+        TrayGenerator.KeyModifiers.Control,
+        TrayGenerator.KeyModifiers.Shift,
+        TrayGenerator.KeyModifiers.Windows};
             this.ModifierDropDown1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ModifierDropDown1.FormattingEnabled = true;
             this.ModifierDropDown1.Location = new System.Drawing.Point(42, 51);
@@ -64,14 +62,12 @@ namespace TrayGenerator
             // 
             // ModifierDropDown2
             // 
-            this.ModifierDropDown2.DataSource = new TrayGenerator.KeyModifiers[]
-            {
-                TrayGenerator.KeyModifiers.None,
-                TrayGenerator.KeyModifiers.Alt,
-                TrayGenerator.KeyModifiers.Control,
-                TrayGenerator.KeyModifiers.Shift,
-                TrayGenerator.KeyModifiers.Windows
-            };
+            this.ModifierDropDown2.DataSource = new TrayGenerator.KeyModifiers[] {
+        TrayGenerator.KeyModifiers.None,
+        TrayGenerator.KeyModifiers.Alt,
+        TrayGenerator.KeyModifiers.Control,
+        TrayGenerator.KeyModifiers.Shift,
+        TrayGenerator.KeyModifiers.Windows};
             this.ModifierDropDown2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ModifierDropDown2.Enabled = false;
             this.ModifierDropDown2.FormattingEnabled = true;
@@ -99,9 +95,9 @@ namespace TrayGenerator
             this.label2.TabIndex = 1;
             this.label2.Text = "+";
             // 
-            // KeyDropDown
+            // SettingKeyDropDown
             // 
-            this.KeyDropDown.DataSource = new System.Windows.Forms.Keys[]
+            this.SettingKeyDropDown.DataSource = new System.Windows.Forms.Keys[]
             {
                 System.Windows.Forms.Keys.None,
                 System.Windows.Forms.Keys.A,
@@ -131,41 +127,33 @@ namespace TrayGenerator
                 System.Windows.Forms.Keys.Y,
                 System.Windows.Forms.Keys.Z
             };
-            this.KeyDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.KeyDropDown.FormattingEnabled = true;
-            this.KeyDropDown.Location = new System.Drawing.Point(218, 51);
-            this.KeyDropDown.Name = "KeyDropDown";
-            this.KeyDropDown.Size = new System.Drawing.Size(55, 21);
-            this.KeyDropDown.TabIndex = 0;
-            this.KeyDropDown.SelectionChangeCommitted += new System.EventHandler(this.KeyDropDown_SelectionChangeCommitted);
+            this.SettingKeyDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SettingKeyDropDown.FormattingEnabled = true;
+            this.SettingKeyDropDown.Location = new System.Drawing.Point(218, 51);
+            this.SettingKeyDropDown.Name = "SettingKeyDropDown";
+            this.SettingKeyDropDown.Size = new System.Drawing.Size(55, 21);
+            this.SettingKeyDropDown.TabIndex = 0;
+            this.SettingKeyDropDown.SelectionChangeCommitted += new System.EventHandler(this.KeyDropDown_SelectionChangeCommitted);
             // 
-            // button1
+            // SaveHotkeyButton
             // 
-            this.button1.Location = new System.Drawing.Point(42, 99);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(231, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Сохранить хоткей";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // hotKeyBindingSource
-            // 
-            this.hotKeyBindingSource.DataSource = typeof(TrayGenerator.HotKey);
-            // 
-            // hotKeyBindingSource1
-            // 
-            this.hotKeyBindingSource1.DataSource = typeof(TrayGenerator.HotKey);
+            this.SaveHotkeyButton.Location = new System.Drawing.Point(42, 99);
+            this.SaveHotkeyButton.Name = "SaveHotkeyButton";
+            this.SaveHotkeyButton.Size = new System.Drawing.Size(231, 23);
+            this.SaveHotkeyButton.TabIndex = 2;
+            this.SaveHotkeyButton.Text = "Сохранить хоткей";
+            this.SaveHotkeyButton.UseVisualStyleBackColor = true;
+            this.SaveHotkeyButton.Click += new System.EventHandler(this.SaveHotkeyButton_Click);
             // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 144);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(331, 163);
+            this.Controls.Add(this.SaveHotkeyButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.KeyDropDown);
+            this.Controls.Add(this.SettingKeyDropDown);
             this.Controls.Add(this.ModifierDropDown2);
             this.Controls.Add(this.ModifierDropDown1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -185,8 +173,8 @@ namespace TrayGenerator
         private System.Windows.Forms.ComboBox ModifierDropDown2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox KeyDropDown;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox SettingKeyDropDown;
+        private System.Windows.Forms.Button SaveHotkeyButton;
         private System.Windows.Forms.BindingSource hotKeyBindingSource;
         private System.Windows.Forms.BindingSource hotKeyBindingSource1;
     }
