@@ -30,15 +30,15 @@ namespace TrayGenerator
                 return new[]
                 {
                     new MenuItem("Выключить уведомления", NotificationStrategySwitch),
-                    new MenuItem("About", MenuAboutClick),
-                    new MenuItem("Exit", MenuExitClick)
+                    new MenuItem("О программе", MenuAboutClick),
+                    new MenuItem("Выйти", MenuExitClick)
                 };
             }
             return new[]
             {
                 new MenuItem("Включить уведомления", NotificationStrategySwitch),
-                new MenuItem("About", MenuAboutClick),
-                new MenuItem("Exit", MenuExitClick)
+                new MenuItem("О программе", MenuAboutClick),
+                new MenuItem("Выйти", MenuExitClick)
             };
         }
 
@@ -50,7 +50,7 @@ namespace TrayGenerator
 
         private static void MenuAboutClick(object sender, EventArgs e)
         {
-            MessageBox.Show(@"About This Application");
+            MessageBox.Show(@"Это замечательное приложение умеет генерировать ИНН для ИП по настраиваемой комбинации клавиш");
         }
 
         private static void MenuExitClick(object sender, EventArgs e)

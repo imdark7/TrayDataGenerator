@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
+using TrayGenerator.Helpers;
 
 namespace TrayGenerator
 {
@@ -11,10 +12,18 @@ namespace TrayGenerator
         private KeyModifiers _modifier2;
         private Keys _settingKey;
         private HotKey _hotKey;
+        private static readonly Configuration Cfg = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        private readonly HotkeyConfigurationSection _section = Cfg.GetSection("AppHotkey") as HotkeyConfigurationSection;
+
 
         public Form()
         {
             InitializeComponent();
+
+            Enum.TryParse(_section.HotkeyActiveCollection[0].Value, out _modifier1);
+            Enum.TryParse(_section.HotkeyActiveCollection[1].Value, out _modifier2);
+            Enum.TryParse(_section.HotkeyActiveCollection[2].Value, out _settingKey);
+
             InitializeSetting();
 
             if (_hotKey != null && _settingKey != Keys.None)
@@ -24,21 +33,20 @@ namespace TrayGenerator
 
             KeyPreview = true;
 
-            _modifier1 = (KeyModifiers)Convert.ToInt32(ConfigurationManager.AppSettings["Modifiers1"], 16);
-            _modifier2 = (KeyModifiers)Convert.ToInt32(ConfigurationManager.AppSettings["Modifiers2"], 16);
-            _settingKey = (Keys)Convert.ToInt32(ConfigurationManager.AppSettings["SettingKey"], 16);
+            Enum.TryParse(_section.HotkeyActiveCollection[0].Value, out _modifier1);
+            Enum.TryParse(_section.HotkeyActiveCollection[1].Value, out _modifier2);
+            Enum.TryParse(_section.HotkeyActiveCollection[2].Value, out _settingKey);
         }
 
         private void InitializeSetting()
         {
-            ModifierDropDown1.SelectedValue = (KeyModifiers)Convert.ToInt32(ConfigurationManager.AppSettings["Modifiers1"], 16);
-            ModifierDropDown2.SelectedValue = (KeyModifiers)Convert.ToInt32(ConfigurationManager.AppSettings["Modifiers2"], 16);
-            SettingKeyDropDown.SelectedValue = (Keys)Convert.ToInt32(ConfigurationManager.AppSettings["SettingKey"], 16);
 
             if (_settingKey != Keys.None)
             {
                 HotKeyRegister(_settingKey, _modifier1, _modifier2);
             }
+
+            RefreshHotkeySettingsLabel();
         }
 
         private void HotKeyRegister(Keys keys, KeyModifiers keyModifiers, KeyModifiers secondKeyModifiers = KeyModifiers.None)
@@ -74,7 +82,10 @@ namespace TrayGenerator
 
         private void ModifierDropDown1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            ModifierDropDown2.Enabled = true;
+            if ((KeyModifiers) ModifierDropDown1.SelectedValue != KeyModifiers.None)
+            {
+                ModifierDropDown2.Enabled = true;
+            }
             _modifier1 = (KeyModifiers) ModifierDropDown1.SelectedValue;
             SaveHotkeyButton.BackColor = Color.LightGray;
         }
@@ -93,17 +104,43 @@ namespace TrayGenerator
 
         private void SaveHotkeyButton_Click(object sender, EventArgs e)
         {
-            if (_settingKey == Keys.None) { return; }
+            if (_settingKey == Keys.None || _modifier1 == KeyModifiers.None) { return; }
 
             if (_hotKey != null) { HotKeyUnregister(); }
 
             HotKeyRegister(_settingKey, _modifier1, _modifier2);
 
-            ConfigurationManager.AppSettings["Modifiers1"] = _modifier1.ToString();
-            ConfigurationManager.AppSettings["Modifiers2"] = _modifier2.ToString();
-            ConfigurationManager.AppSettings["SettingKey"] = _settingKey.ToString();
+            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[0].Key);
+            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[0].Value);
+            _section.HotkeyActiveCollection[0].Value = _modifier1.ToString();
+
+            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[1].Key);
+            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[1].Value);
+            _section.HotkeyActiveCollection[1].Value = _modifier2.ToString();
+
+            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[2].Key);
+            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[2].Value);
+            
+            _section.HotkeyActiveCollection[2].Value = _settingKey.ToString();
+
+            Cfg.Save();
+            RefreshHotkeySettingsLabel();
 
             SaveHotkeyButton.BackColor = Color.LightGreen;
+        }
+
+        private void RefreshHotkeySettingsLabel()
+        {
+            if (_modifier1 == KeyModifiers.None && _settingKey == Keys.None)
+            {
+                InfoHotkeySettings.Text = "не задан";
+            } else if (_modifier1 != KeyModifiers.None && _modifier2 != KeyModifiers.None && _settingKey != Keys.None)
+            {
+                InfoHotkeySettings.Text = $@"{_modifier1} + {_modifier2} + {_settingKey}";
+            } else if (_modifier1 != KeyModifiers.None && _settingKey != Keys.None)
+            {
+                InfoHotkeySettings.Text = $@"{_modifier1} + {_settingKey}";
+            }
         }
     }
 }
