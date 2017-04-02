@@ -61,5 +61,107 @@ namespace TrayGenerator
                 return innString;
             }
         }
+
+        public static string OgrnIp
+        {
+            get
+            {
+                var r = new Random();
+                var ogrn = new int[15];
+                ogrn[0] = r.Next(1, 10);
+                for (var i = 1; i < 12; i++)
+                {
+                    ogrn[i] = r.Next(10);
+                }
+                while (ogrn[3] + ogrn[4] == 0)
+                {
+                    ogrn[3] = r.Next(10);
+                    ogrn[4] = r.Next(10);
+                }
+                while (ogrn[5] + ogrn[6] == 0)
+                {
+                    ogrn[5] = r.Next(10);
+                    ogrn[6] = r.Next(10);
+                }
+                ogrn[14] = (int.Parse($"{ogrn[0]}{ogrn[1]}{ogrn[2]}{ogrn[3]}{ogrn[4]}{ogrn[5]}{ogrn[6]}{ogrn[7]}{ogrn[8]}{ogrn[9]}{ogrn[10]}{ogrn[11]}{ogrn[12]}{ogrn[13]}") % 13) % 10;
+                var ogrnString = "";
+                for (var i = 0; i < 13; i++)
+                {
+                    ogrnString += ogrn[i].ToString();
+                }
+
+                return ogrnString;
+            }
+        }
+
+        public static string OgrnUl
+        {
+            get
+            {
+                var r = new Random();
+                var ogrn = new int[13];
+                ogrn[0] = r.Next(1, 10);
+                for (var i = 1; i < 12; i++)
+                {
+                    ogrn[i] = r.Next(10);
+                }
+                while (ogrn[3] + ogrn[4] == 0)
+                {
+                    ogrn[3] = r.Next(10);
+                    ogrn[4] = r.Next(10);
+                }
+                while (ogrn[5] + ogrn[6] == 0)
+                {
+                    ogrn[5] = r.Next(10);
+                    ogrn[6] = r.Next(10);
+                }
+                ogrn[12] = (int.Parse($"{ogrn[0]}{ogrn[1]}{ogrn[2]}{ogrn[3]}{ogrn[4]}{ogrn[5]}{ogrn[6]}{ogrn[7]}{ogrn[8]}{ogrn[9]}{ogrn[10]}{ogrn[11]}") % 11 ) % 10;
+                var ogrnString = "";
+                for (var i = 0; i < 13; i++)
+                {
+                    ogrnString += ogrn[i].ToString();
+                }
+
+                return ogrnString;
+            }
+        }
+
+        public static string Snils
+        {
+            get
+            {
+                var r = new Random();
+                var snils = new int[11];
+                do
+                {
+                    snils[0] = r.Next(10);
+                    snils[1] = r.Next(10);
+                    snils[2] = r.Next(10);
+                } while (snils[0] + snils[1] + snils[2] == 0 || int.Parse($"{snils[0]}{snils[1]}{snils[2]}") == 1);
+                do
+                {
+                    snils[3] = r.Next(10);
+                    snils[4] = r.Next(10);
+                    snils[5] = r.Next(10);
+                } while (snils[3] + snils[4] + snils[5] == 0 || int.Parse($"{snils[3]}{snils[4]}{snils[5]}") == 1);
+                for (var i = 6; i < 9; i++)
+                {
+                    snils[i] = r.Next(10);
+                }
+                var sum = snils[0] * 9 + snils[1] * 8 + snils[2] * 7 + snils[3] * 6 + snils[4] * 5 + snils[5] * 4 +
+                          snils[6] * 3 + snils[7] * 2 + snils[8] * 1;
+                var snilsString = $"{snils[0]}{snils[1]}{snils[2]}{snils[3]}{snils[4]}{snils[5]}{snils[6]}{snils[7]}{snils[8]}";
+                if (sum < 100)
+                {
+                    return $"{snilsString}{sum}";
+                }
+                if (sum == 100 || sum == 101)
+                {
+                    return $"{snilsString}00";
+                }
+                return $"{snilsString}{sum % 101}";
+            }
+        }
+        }
     }
 }
