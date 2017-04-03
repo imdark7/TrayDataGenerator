@@ -110,17 +110,8 @@ namespace TrayGenerator
 
             HotKeyRegister(_settingKey, _modifier1, _modifier2);
 
-            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[0].Key);
-            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[0].Value);
             _section.HotkeyActiveCollection[0].Value = _modifier1.ToString();
-
-            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[1].Key);
-            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[1].Value);
             _section.HotkeyActiveCollection[1].Value = _modifier2.ToString();
-
-            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[2].Key);
-            System.Diagnostics.Debug.WriteLine(_section.HotkeyActiveCollection[2].Value);
-            
             _section.HotkeyActiveCollection[2].Value = _settingKey.ToString();
 
             Cfg.Save();
@@ -133,7 +124,7 @@ namespace TrayGenerator
         {
             if (_modifier1 == KeyModifiers.None && _settingKey == Keys.None)
             {
-                InfoHotkeySettings.Text = "не задан";
+                InfoHotkeySettings.Text = @"не задан";
             } else if (_modifier1 != KeyModifiers.None && _modifier2 != KeyModifiers.None && _settingKey != Keys.None)
             {
                 InfoHotkeySettings.Text = $@"{_modifier1} + {_modifier2} + {_settingKey}";

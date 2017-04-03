@@ -31,19 +31,14 @@ namespace TrayGenerator
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.ModifierDropDown1 = new System.Windows.Forms.ComboBox();
             this.ModifierDropDown2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SettingKeyDropDown = new System.Windows.Forms.ComboBox();
             this.SaveHotkeyButton = new System.Windows.Forms.Button();
-            this.hotKeyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hotKeyBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.InfoHotkeySettings = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.hotKeyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hotKeyBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // ModifierDropDown1
@@ -180,8 +175,6 @@ namespace TrayGenerator
             this.Name = "Form";
             this.Text = "TrayGenerator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.hotKeyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hotKeyBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,8 +188,6 @@ namespace TrayGenerator
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox SettingKeyDropDown;
         private System.Windows.Forms.Button SaveHotkeyButton;
-        private System.Windows.Forms.BindingSource hotKeyBindingSource;
-        private System.Windows.Forms.BindingSource hotKeyBindingSource1;
         private Label label3;
         private Label InfoHotkeySettings;
     }

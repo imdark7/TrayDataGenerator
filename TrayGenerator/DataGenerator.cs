@@ -162,6 +162,5 @@ namespace TrayGenerator
                 return $"{snilsString}{sum % 101}";
             }
         }
-        }
     }
 }
