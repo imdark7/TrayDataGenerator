@@ -69,7 +69,7 @@ namespace TrayGenerator
                 var r = new Random();
                 var ogrn = new int[15];
                 ogrn[0] = r.Next(1, 10);
-                for (var i = 1; i < 12; i++)
+                for (var i = 1; i < 14; i++)
                 {
                     ogrn[i] = r.Next(10);
                 }
@@ -83,9 +83,10 @@ namespace TrayGenerator
                     ogrn[5] = r.Next(10);
                     ogrn[6] = r.Next(10);
                 }
-                ogrn[14] = (int.Parse($"{ogrn[0]}{ogrn[1]}{ogrn[2]}{ogrn[3]}{ogrn[4]}{ogrn[5]}{ogrn[6]}{ogrn[7]}{ogrn[8]}{ogrn[9]}{ogrn[10]}{ogrn[11]}{ogrn[12]}{ogrn[13]}") % 13) % 10;
+
+                ogrn[14] = (int) (long.Parse($"{ogrn[0]}{ogrn[1]}{ogrn[2]}{ogrn[3]}{ogrn[4]}{ogrn[5]}{ogrn[6]}{ogrn[7]}{ogrn[8]}{ogrn[9]}{ogrn[10]}{ogrn[11]}{ogrn[12]}{ogrn[13]}") % 13 % 10);
                 var ogrnString = "";
-                for (var i = 0; i < 13; i++)
+                for (var i = 0; i < 15; i++)
                 {
                     ogrnString += ogrn[i].ToString();
                 }
@@ -115,7 +116,7 @@ namespace TrayGenerator
                     ogrn[5] = r.Next(10);
                     ogrn[6] = r.Next(10);
                 }
-                ogrn[12] = (int.Parse($"{ogrn[0]}{ogrn[1]}{ogrn[2]}{ogrn[3]}{ogrn[4]}{ogrn[5]}{ogrn[6]}{ogrn[7]}{ogrn[8]}{ogrn[9]}{ogrn[10]}{ogrn[11]}") % 11 ) % 10;
+                ogrn[12] = (int)(long.Parse($"{ogrn[0]}{ogrn[1]}{ogrn[2]}{ogrn[3]}{ogrn[4]}{ogrn[5]}{ogrn[6]}{ogrn[7]}{ogrn[8]}{ogrn[9]}{ogrn[10]}{ogrn[11]}") % 11 ) % 10;
                 var ogrnString = "";
                 for (var i = 0; i < 13; i++)
                 {
