@@ -4,7 +4,7 @@ namespace TrayGenerator.Helpers
 {
     public class HotkeyActiveElement : ConfigurationElement
     {
-        [ConfigurationProperty("key", DefaultValue = "0x0000", IsKey = true, IsRequired = true)]
+        [ConfigurationProperty("key", IsKey = true, IsRequired = true)]
         public string Key
         {
             get { return (string) base["key"]; }

@@ -8,9 +8,10 @@ namespace TrayGenerator
         private static NotifyIcon _notifyIcon;
         private static ContextMenu NotificationMenu => new ContextMenu(InitializeMenu());
         public static bool ShowNotificationStrategy;
-        private static Form _mainForm;
-        
-        public static Form Initialize()
+        private static MainForm _mainForm;
+        private static SettingsForm _mainSettingsForm;
+
+        public static SettingsForm Initialize()
         {
             _notifyIcon = new NotifyIcon
             {
@@ -19,8 +20,8 @@ namespace TrayGenerator
                 Icon = Properties.Resources.MyIcon
             };
             _notifyIcon.DoubleClick += IconDoubleClick;
-            _mainForm = new Form();
-            return _mainForm;
+            _mainSettingsForm = new SettingsForm();
+            return _mainSettingsForm;
         }
 
         private static MenuItem[] InitializeMenu()
@@ -29,6 +30,7 @@ namespace TrayGenerator
             {
                 return new[]
                 {
+                    new MenuItem("Настроить хоткеи", SetHotkeys),
                     new MenuItem("Выключить уведомления", NotificationStrategySwitch),
                     new MenuItem("О программе", MenuAboutClick),
                     new MenuItem("Выйти", MenuExitClick)
@@ -36,10 +38,19 @@ namespace TrayGenerator
             }
             return new[]
             {
+                new MenuItem("Настроить хоткеи", SetHotkeys),
                 new MenuItem("Включить уведомления", NotificationStrategySwitch),
                 new MenuItem("О программе", MenuAboutClick),
                 new MenuItem("Выйти", MenuExitClick)
             };
+        }
+
+        private static void SetHotkeys(object sender, EventArgs e)
+        {
+            if (_mainSettingsForm == null || _mainSettingsForm.IsDisposed)
+                _mainSettingsForm = new SettingsForm();
+            if (!_mainSettingsForm.Visible)
+                _mainSettingsForm.Show();
         }
 
         private static void NotificationStrategySwitch(object sender, EventArgs e)
@@ -61,10 +72,8 @@ namespace TrayGenerator
 
         private static void IconDoubleClick(object sender, EventArgs e)
         {
-            if (_mainForm == null || _mainForm.IsDisposed)
-                _mainForm = new Form();
-            if (!_mainForm.Visible)
-                _mainForm.Show();
+            _mainForm = new MainForm();
+            _mainForm.Show();
         }
 
         public static void ShowBalloonTip(int timeout, string tipTitle, string tipText, ToolTipIcon tipIcon)
