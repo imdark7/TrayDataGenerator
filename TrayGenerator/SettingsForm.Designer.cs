@@ -61,8 +61,7 @@ namespace TrayGenerator
         TrayGenerator.KeyModifiers.None,
         TrayGenerator.KeyModifiers.Alt,
         TrayGenerator.KeyModifiers.Control,
-        TrayGenerator.KeyModifiers.Shift,
-        TrayGenerator.KeyModifiers.Windows};
+        TrayGenerator.KeyModifiers.Shift};
             this.ModifierDropDownIp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ModifierDropDownIp1.FormattingEnabled = true;
             this.ModifierDropDownIp1.Location = new System.Drawing.Point(7, 56);
@@ -279,8 +278,7 @@ namespace TrayGenerator
         TrayGenerator.KeyModifiers.None,
         TrayGenerator.KeyModifiers.Alt,
         TrayGenerator.KeyModifiers.Control,
-        TrayGenerator.KeyModifiers.Shift,
-        TrayGenerator.KeyModifiers.Windows};
+        TrayGenerator.KeyModifiers.Shift};
             this.ModifierDropDownUl1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ModifierDropDownUl1.FormattingEnabled = true;
             this.ModifierDropDownUl1.Location = new System.Drawing.Point(6, 56);

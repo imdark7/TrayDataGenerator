@@ -1,4 +1,7 @@
-﻿namespace TrayGenerator
+﻿using System;
+using System.Windows.Forms;
+
+namespace TrayGenerator
 {
     partial class MainForm
     {
@@ -44,8 +47,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.innIpLabel = new System.Windows.Forms.Label();
             this.innIpGenButton = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DataList = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
@@ -78,13 +81,14 @@
             this.panel1.Controls.Add(this.splitContainer4);
             this.panel1.Controls.Add(this.splitContainer2);
             this.panel1.Controls.Add(this.splitContainer1);
-            this.panel1.Location = new System.Drawing.Point(12, 10);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(275, 266);
+            this.panel1.Size = new System.Drawing.Size(277, 280);
             this.panel1.TabIndex = 5;
             // 
             // splitContainer5
             // 
+            this.splitContainer5.IsSplitterFixed = true;
             this.splitContainer5.Location = new System.Drawing.Point(9, 218);
             this.splitContainer5.Name = "splitContainer5";
             // 
@@ -109,6 +113,7 @@
             this.snilsLabel.TabIndex = 0;
             this.snilsLabel.Text = "_______________";
             this.snilsLabel.UseMnemonic = false;
+            this.snilsLabel.DoubleClick += new System.EventHandler(this.Label_DoubleClick);
             // 
             // snilsGenButton
             // 
@@ -122,6 +127,7 @@
             // 
             // splitContainer3
             // 
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(9, 169);
             this.splitContainer3.Name = "splitContainer3";
             // 
@@ -146,6 +152,7 @@
             this.ogrnUlLabel.TabIndex = 0;
             this.ogrnUlLabel.Text = "_______________";
             this.ogrnUlLabel.UseMnemonic = false;
+            this.ogrnUlLabel.DoubleClick += new System.EventHandler(this.Label_DoubleClick);
             // 
             // ogrnUlGenButton
             // 
@@ -159,6 +166,7 @@
             // 
             // splitContainer4
             // 
+            this.splitContainer4.IsSplitterFixed = true;
             this.splitContainer4.Location = new System.Drawing.Point(9, 118);
             this.splitContainer4.Name = "splitContainer4";
             // 
@@ -183,6 +191,7 @@
             this.ogrnIpLabel.TabIndex = 0;
             this.ogrnIpLabel.Text = "_______________";
             this.ogrnIpLabel.UseMnemonic = false;
+            this.ogrnIpLabel.DoubleClick += new System.EventHandler(this.Label_DoubleClick);
             // 
             // ogrnIpGenButton
             // 
@@ -196,6 +205,7 @@
             // 
             // splitContainer2
             // 
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(9, 67);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -220,6 +230,7 @@
             this.innUlLabel.TabIndex = 0;
             this.innUlLabel.Text = "_______________";
             this.innUlLabel.UseMnemonic = false;
+            this.innUlLabel.DoubleClick += new System.EventHandler(this.Label_DoubleClick);
             // 
             // innUlGenButton
             // 
@@ -233,6 +244,7 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(9, 16);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -257,6 +269,7 @@
             this.innIpLabel.TabIndex = 0;
             this.innIpLabel.Text = "_______________";
             this.innIpLabel.UseMnemonic = false;
+            this.innIpLabel.DoubleClick += new System.EventHandler(this.Label_DoubleClick);
             // 
             // innIpGenButton
             // 
@@ -268,29 +281,33 @@
             this.innIpGenButton.UseVisualStyleBackColor = true;
             this.innIpGenButton.Click += new System.EventHandler(this.InnIpGenButton_Click);
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 20);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(218, 238);
-            this.listBox1.TabIndex = 6;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Location = new System.Drawing.Point(293, 10);
+            this.groupBox1.Controls.Add(this.DataList);
+            this.groupBox1.Location = new System.Drawing.Point(295, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(230, 266);
+            this.groupBox1.Size = new System.Drawing.Size(163, 284);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ранее генерированные данные";
+            this.groupBox1.Text = "Последние генерации";
+            // 
+            // DataList
+            // 
+            this.DataList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DataList.FormattingEnabled = true;
+            this.DataList.ItemHeight = 18;
+            this.DataList.Location = new System.Drawing.Point(10, 20);
+            this.DataList.Name = "DataList";
+            this.DataList.Size = new System.Drawing.Size(144, 256);
+            this.DataList.TabIndex = 0;
+            this.DataList.TabStop = false;
+            this.DataList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DataList_MouseDoubleClick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 288);
+            this.ClientSize = new System.Drawing.Size(473, 299);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
@@ -344,7 +361,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label innIpLabel;
         private System.Windows.Forms.Button innIpGenButton;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private ListBox DataList;
     }
 }
