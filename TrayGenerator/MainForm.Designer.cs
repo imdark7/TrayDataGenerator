@@ -3,17 +3,17 @@ using System.Windows.Forms;
 
 namespace TrayGenerator
 {
-    partial class Form
+    partial class MainForm
     {
         /// <summary>
-        /// Обязательная переменная конструктора.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Освободить все используемые ресурсы.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -23,22 +23,14 @@ namespace TrayGenerator
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором форм Windows
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.ModifierDropDown1 = new System.Windows.Forms.ComboBox();
-            this.ModifierDropDown2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.SettingKeyDropDown = new System.Windows.Forms.ComboBox();
-            this.SaveHotkeyButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.InfoHotkeySettings = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.snilsLabel = new System.Windows.Forms.Label();
@@ -55,6 +47,8 @@ namespace TrayGenerator
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.innIpLabel = new System.Windows.Forms.Label();
             this.innIpGenButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DataList = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
@@ -76,124 +70,8 @@ namespace TrayGenerator
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ModifierDropDown1
-            // 
-            this.ModifierDropDown1.DataSource = new TrayGenerator.KeyModifiers[] {
-        TrayGenerator.KeyModifiers.None,
-        TrayGenerator.KeyModifiers.Alt,
-        TrayGenerator.KeyModifiers.Control,
-        TrayGenerator.KeyModifiers.Shift,
-        TrayGenerator.KeyModifiers.Windows};
-            this.ModifierDropDown1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ModifierDropDown1.FormattingEnabled = true;
-            this.ModifierDropDown1.Location = new System.Drawing.Point(33, 57);
-            this.ModifierDropDown1.Name = "ModifierDropDown1";
-            this.ModifierDropDown1.Size = new System.Drawing.Size(63, 21);
-            this.ModifierDropDown1.TabIndex = 0;
-            this.ModifierDropDown1.SelectionChangeCommitted += new System.EventHandler(this.ModifierDropDown1_SelectionChangeCommitted);
-            // 
-            // ModifierDropDown2
-            // 
-            this.ModifierDropDown2.DataSource = new TrayGenerator.KeyModifiers[] {
-        TrayGenerator.KeyModifiers.None,
-        TrayGenerator.KeyModifiers.Alt,
-        TrayGenerator.KeyModifiers.Control,
-        TrayGenerator.KeyModifiers.Shift,
-        TrayGenerator.KeyModifiers.Windows};
-            this.ModifierDropDown2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ModifierDropDown2.Enabled = false;
-            this.ModifierDropDown2.FormattingEnabled = true;
-            this.ModifierDropDown2.Location = new System.Drawing.Point(121, 57);
-            this.ModifierDropDown2.Name = "ModifierDropDown2";
-            this.ModifierDropDown2.Size = new System.Drawing.Size(63, 21);
-            this.ModifierDropDown2.TabIndex = 0;
-            this.ModifierDropDown2.SelectionChangeCommitted += new System.EventHandler(this.ModifierDropDown2_SelectionChangeCommitted);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(190, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "+";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(102, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "+";
-            // 
-            // SettingKeyDropDown
-            // 
-            this.SettingKeyDropDown.DataSource = new System.Windows.Forms.Keys[] {
-        System.Windows.Forms.Keys.None,
-        System.Windows.Forms.Keys.A,
-        System.Windows.Forms.Keys.B,
-        System.Windows.Forms.Keys.C,
-        System.Windows.Forms.Keys.D,
-        System.Windows.Forms.Keys.E,
-        System.Windows.Forms.Keys.F,
-        System.Windows.Forms.Keys.G,
-        System.Windows.Forms.Keys.H,
-        System.Windows.Forms.Keys.I,
-        System.Windows.Forms.Keys.J,
-        System.Windows.Forms.Keys.K,
-        System.Windows.Forms.Keys.L,
-        System.Windows.Forms.Keys.M,
-        System.Windows.Forms.Keys.N,
-        System.Windows.Forms.Keys.O,
-        System.Windows.Forms.Keys.P,
-        System.Windows.Forms.Keys.Q,
-        System.Windows.Forms.Keys.R,
-        System.Windows.Forms.Keys.S,
-        System.Windows.Forms.Keys.T,
-        System.Windows.Forms.Keys.U,
-        System.Windows.Forms.Keys.V,
-        System.Windows.Forms.Keys.W,
-        System.Windows.Forms.Keys.X,
-        System.Windows.Forms.Keys.Y,
-        System.Windows.Forms.Keys.Z};
-            this.SettingKeyDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SettingKeyDropDown.FormattingEnabled = true;
-            this.SettingKeyDropDown.Location = new System.Drawing.Point(209, 57);
-            this.SettingKeyDropDown.Name = "SettingKeyDropDown";
-            this.SettingKeyDropDown.Size = new System.Drawing.Size(55, 21);
-            this.SettingKeyDropDown.TabIndex = 0;
-            this.SettingKeyDropDown.SelectionChangeCommitted += new System.EventHandler(this.KeyDropDown_SelectionChangeCommitted);
-            // 
-            // SaveHotkeyButton
-            // 
-            this.SaveHotkeyButton.Location = new System.Drawing.Point(33, 93);
-            this.SaveHotkeyButton.Name = "SaveHotkeyButton";
-            this.SaveHotkeyButton.Size = new System.Drawing.Size(231, 23);
-            this.SaveHotkeyButton.TabIndex = 2;
-            this.SaveHotkeyButton.Text = "Сохранить хоткей";
-            this.SaveHotkeyButton.UseVisualStyleBackColor = true;
-            this.SaveHotkeyButton.Click += new System.EventHandler(this.SaveHotkeyButton_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Текущий хоткей:";
-            // 
-            // InfoHotkeySettings
-            // 
-            this.InfoHotkeySettings.AutoSize = true;
-            this.InfoHotkeySettings.Location = new System.Drawing.Point(147, 26);
-            this.InfoHotkeySettings.Name = "InfoHotkeySettings";
-            this.InfoHotkeySettings.Size = new System.Drawing.Size(52, 13);
-            this.InfoHotkeySettings.TabIndex = 3;
-            this.InfoHotkeySettings.Text = "не задан";
             // 
             // panel1
             // 
@@ -203,13 +81,14 @@ namespace TrayGenerator
             this.panel1.Controls.Add(this.splitContainer4);
             this.panel1.Controls.Add(this.splitContainer2);
             this.panel1.Controls.Add(this.splitContainer1);
-            this.panel1.Location = new System.Drawing.Point(12, 134);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(275, 266);
-            this.panel1.TabIndex = 4;
+            this.panel1.Size = new System.Drawing.Size(277, 280);
+            this.panel1.TabIndex = 5;
             // 
             // splitContainer5
             // 
+            this.splitContainer5.IsSplitterFixed = true;
             this.splitContainer5.Location = new System.Drawing.Point(9, 218);
             this.splitContainer5.Name = "splitContainer5";
             // 
@@ -234,6 +113,7 @@ namespace TrayGenerator
             this.snilsLabel.TabIndex = 0;
             this.snilsLabel.Text = "_______________";
             this.snilsLabel.UseMnemonic = false;
+            this.snilsLabel.DoubleClick += new System.EventHandler(this.Label_DoubleClick);
             // 
             // snilsGenButton
             // 
@@ -247,6 +127,7 @@ namespace TrayGenerator
             // 
             // splitContainer3
             // 
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(9, 169);
             this.splitContainer3.Name = "splitContainer3";
             // 
@@ -271,6 +152,7 @@ namespace TrayGenerator
             this.ogrnUlLabel.TabIndex = 0;
             this.ogrnUlLabel.Text = "_______________";
             this.ogrnUlLabel.UseMnemonic = false;
+            this.ogrnUlLabel.DoubleClick += new System.EventHandler(this.Label_DoubleClick);
             // 
             // ogrnUlGenButton
             // 
@@ -284,6 +166,7 @@ namespace TrayGenerator
             // 
             // splitContainer4
             // 
+            this.splitContainer4.IsSplitterFixed = true;
             this.splitContainer4.Location = new System.Drawing.Point(9, 118);
             this.splitContainer4.Name = "splitContainer4";
             // 
@@ -308,6 +191,7 @@ namespace TrayGenerator
             this.ogrnIpLabel.TabIndex = 0;
             this.ogrnIpLabel.Text = "_______________";
             this.ogrnIpLabel.UseMnemonic = false;
+            this.ogrnIpLabel.DoubleClick += new System.EventHandler(this.Label_DoubleClick);
             // 
             // ogrnIpGenButton
             // 
@@ -321,6 +205,7 @@ namespace TrayGenerator
             // 
             // splitContainer2
             // 
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(9, 67);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -345,6 +230,7 @@ namespace TrayGenerator
             this.innUlLabel.TabIndex = 0;
             this.innUlLabel.Text = "_______________";
             this.innUlLabel.UseMnemonic = false;
+            this.innUlLabel.DoubleClick += new System.EventHandler(this.Label_DoubleClick);
             // 
             // innUlGenButton
             // 
@@ -358,6 +244,7 @@ namespace TrayGenerator
             // 
             // splitContainer1
             // 
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(9, 16);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -382,6 +269,7 @@ namespace TrayGenerator
             this.innIpLabel.TabIndex = 0;
             this.innIpLabel.Text = "_______________";
             this.innIpLabel.UseMnemonic = false;
+            this.innIpLabel.DoubleClick += new System.EventHandler(this.Label_DoubleClick);
             // 
             // innIpGenButton
             // 
@@ -393,24 +281,37 @@ namespace TrayGenerator
             this.innIpGenButton.UseVisualStyleBackColor = true;
             this.innIpGenButton.Click += new System.EventHandler(this.InnIpGenButton_Click);
             // 
-            // Form
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.DataList);
+            this.groupBox1.Location = new System.Drawing.Point(295, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(163, 284);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Последние генерации";
+            // 
+            // DataList
+            // 
+            this.DataList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DataList.FormattingEnabled = true;
+            this.DataList.ItemHeight = 18;
+            this.DataList.Location = new System.Drawing.Point(10, 20);
+            this.DataList.Name = "DataList";
+            this.DataList.Size = new System.Drawing.Size(144, 256);
+            this.DataList.TabIndex = 0;
+            this.DataList.TabStop = false;
+            this.DataList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DataList_MouseDoubleClick);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 408);
+            this.ClientSize = new System.Drawing.Size(473, 299);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.InfoHotkeySettings);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.SaveHotkeyButton);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.SettingKeyDropDown);
-            this.Controls.Add(this.ModifierDropDown2);
-            this.Controls.Add(this.ModifierDropDown1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Name = "Form";
-            this.Text = "TrayGenerator";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_FormClosing);
+            this.Name = "MainForm";
+            this.Text = "MainForm";
             this.panel1.ResumeLayout(false);
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel1.PerformLayout();
@@ -437,37 +338,30 @@ namespace TrayGenerator
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox ModifierDropDown1;
-        private System.Windows.Forms.ComboBox ModifierDropDown2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox SettingKeyDropDown;
-        private System.Windows.Forms.Button SaveHotkeyButton;
-        private Label label3;
-        private Label InfoHotkeySettings;
-        private Panel panel1;
-        private Button innIpGenButton;
-        private Label innIpLabel;
-        private SplitContainer splitContainer5;
-        private Label snilsLabel;
-        private Button snilsGenButton;
-        private SplitContainer splitContainer3;
-        private Label ogrnUlLabel;
-        private Button ogrnUlGenButton;
-        private SplitContainer splitContainer4;
-        private Label ogrnIpLabel;
-        private Button ogrnIpGenButton;
-        private SplitContainer splitContainer2;
-        private Label innUlLabel;
-        private Button innUlGenButton;
-        private SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.Label snilsLabel;
+        private System.Windows.Forms.Button snilsGenButton;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.Label ogrnUlLabel;
+        private System.Windows.Forms.Button ogrnUlGenButton;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.Label ogrnIpLabel;
+        private System.Windows.Forms.Button ogrnIpGenButton;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Label innUlLabel;
+        private System.Windows.Forms.Button innUlGenButton;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Label innIpLabel;
+        private System.Windows.Forms.Button innIpGenButton;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private ListBox DataList;
     }
 }
-

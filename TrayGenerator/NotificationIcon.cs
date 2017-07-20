@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Windows.Forms;
 
 namespace TrayGenerator
@@ -8,9 +9,11 @@ namespace TrayGenerator
         private static NotifyIcon _notifyIcon;
         private static ContextMenu NotificationMenu => new ContextMenu(InitializeMenu());
         public static bool ShowNotificationStrategy;
-        private static Form _mainForm;
-        
-        public static Form Initialize()
+        private static MainForm _mainForm;
+        private static SettingsForm _mainSettingsForm;
+        public static ArrayList DataArrayList = new ArrayList(18);
+
+        public static SettingsForm Initialize()
         {
             _notifyIcon = new NotifyIcon
             {
@@ -19,8 +22,8 @@ namespace TrayGenerator
                 Icon = Properties.Resources.MyIcon
             };
             _notifyIcon.DoubleClick += IconDoubleClick;
-            _mainForm = new Form();
-            return _mainForm;
+            _mainSettingsForm = new SettingsForm();
+            return _mainSettingsForm;
         }
 
         private static MenuItem[] InitializeMenu()
@@ -29,6 +32,7 @@ namespace TrayGenerator
             {
                 return new[]
                 {
+                    new MenuItem("Настроить хоткеи", SetHotkeys),
                     new MenuItem("Выключить уведомления", NotificationStrategySwitch),
                     new MenuItem("О программе", MenuAboutClick),
                     new MenuItem("Выйти", MenuExitClick)
@@ -36,10 +40,17 @@ namespace TrayGenerator
             }
             return new[]
             {
+                new MenuItem("Настроить хоткеи", SetHotkeys),
                 new MenuItem("Включить уведомления", NotificationStrategySwitch),
                 new MenuItem("О программе", MenuAboutClick),
                 new MenuItem("Выйти", MenuExitClick)
             };
+        }
+
+        private static void SetHotkeys(object sender, EventArgs e)
+        {
+            if (_mainSettingsForm == null || _mainSettingsForm.IsDisposed) { _mainSettingsForm = new SettingsForm(); }
+            _mainSettingsForm.Show();
         }
 
         private static void NotificationStrategySwitch(object sender, EventArgs e)
@@ -50,7 +61,7 @@ namespace TrayGenerator
 
         private static void MenuAboutClick(object sender, EventArgs e)
         {
-            MessageBox.Show(@"Это замечательное приложение умеет генерировать ИНН для ИП по настраиваемой комбинации клавиш");
+            MessageBox.Show(@"Это замечательное приложение умеет генерировать ИНН для ИП и ЮЛ по настраиваемой комбинации клавиш");
         }
 
         private static void MenuExitClick(object sender, EventArgs e)
@@ -61,15 +72,20 @@ namespace TrayGenerator
 
         private static void IconDoubleClick(object sender, EventArgs e)
         {
-            if (_mainForm == null || _mainForm.IsDisposed)
-                _mainForm = new Form();
-            if (!_mainForm.Visible)
-                _mainForm.Show();
+            if (_mainForm == null || _mainForm.IsDisposed) { _mainForm = new MainForm(); }
+            _mainForm.Show();
         }
 
         public static void ShowBalloonTip(int timeout, string tipTitle, string tipText, ToolTipIcon tipIcon)
         {
             _notifyIcon.ShowBalloonTip(timeout, tipTitle, tipText, tipIcon);
+        }
+
+        public static void AddElementToDataArrayList(string text)
+        {
+            while (DataArrayList.Count > 13) { DataArrayList.RemoveAt(13); }
+            DataArrayList.Insert(0, text);
+            if (_mainForm != null && !_mainForm.IsDisposed) { _mainForm.RefreshListBox(); }
         }
     }
 }
