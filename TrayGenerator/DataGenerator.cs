@@ -49,7 +49,7 @@ namespace TrayGenerator
                 {
                     inn[i] = r.Next(10);
                 }
-                inn[9] = ((inn[0] * 2 + inn[1] * 3 + inn[2] * 10 + inn[3] * 3 + inn[4] * 5 + inn[5] * 9 + inn[6] * 4 + inn[7] * 6 + inn[8] * 8) % 11 ) % 10;
+                inn[9] = ((inn[0] * 2 + inn[1] * 4 + inn[2] * 10 + inn[3] * 3 + inn[4] * 5 + inn[5] * 9 + inn[6] * 4 + inn[7] * 6 + inn[8] * 8) % 11 ) % 10;
 
                 var innString = "";
 
